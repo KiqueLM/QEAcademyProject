@@ -77,6 +77,13 @@ public class WhenTest {
     public void user_clics_on_the_I_confirm_my_order_button() {
         ShCartSum.clickConfirmOrderBtn();
     }
+    
+    @When("User click Create Account")
+    public void user_click_Create_Account() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
 
 
 }
