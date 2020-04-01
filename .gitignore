@@ -32,4 +32,4 @@ target/test-classes/drivers
 target/test-classes/pageObjects
 target/test-classes/stepDefinitions
 target/test-classes/testRunners
-target/
+*/target/**
