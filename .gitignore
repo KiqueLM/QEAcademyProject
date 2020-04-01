@@ -28,4 +28,8 @@ hs_err_pid*
 .idea/modules.xml
 .idea/vcs.xml
 target/generated-sources/
-target/test-classes
+target/test-classes/drivers
+target/test-classes/pageObjects
+target/test-classes/stepDefinitions
+target/test-classes/testRunners
+target/
