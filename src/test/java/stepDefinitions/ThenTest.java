@@ -5,14 +5,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import pageObjects.ShoppingCartSumPage;
 
 public class ThenTest {
 
-    WebDriver driver = GivenTest.driver;
+    ShoppingCartSumPage ShCartSum = new ShoppingCartSumPage(driver);
+
+    public static WebDriver driver = GivenTest.driver;
 
     @Then("User should be logged correctly")
     public void user_should_be_logged_correctly() {
-        Assert.assertTrue(driver.getCurrentUrl().equals("http://automationpractice.com/index.php?controller=my-account"));
+        Assert.assertEquals(driver.getCurrentUrl(), "http://automationpractice.com/index.php?controller=my-account");
     }
 
     @Then("User should not get logged in")
@@ -26,8 +29,7 @@ public class ThenTest {
 
     @Then("User should get a message with the approval")
     public void user_should_get_a_message_with_the_approval() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertEquals(ShCartSum.getTextSuccessAlert(), "Your order on My Store is complete.");
+        System.out.println(ShCartSum.getTextSuccessAlert());
     }
-
 }

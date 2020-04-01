@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterTest;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class SetUpClass {
 
     @Before
     public WebDriver setUp() throws IOException {
+
         Properties prop = new Properties();
         FileInputStream fis = new FileInputStream("src\\test\\java\\Utility\\data.properties");
         prop.load(fis);
@@ -30,6 +32,7 @@ public class SetUpClass {
                 System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\drivers\\chromedriver.exe");
                 driver = new ChromeDriver();
                 driver.get(url);
+                driver.manage().deleteAllCookies();
                 driver.manage().window().maximize();
                 break;
 
@@ -37,6 +40,7 @@ public class SetUpClass {
                 System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\drivers\\geckodriver.exe");
                 driver = new FirefoxDriver();
                 driver.get(url);
+                driver.manage().deleteAllCookies();
                 driver.manage().window().maximize();
                 break;
 
@@ -44,6 +48,7 @@ public class SetUpClass {
                 System.setProperty("webdriver.edge.driver", "src\\test\\resources\\drivers\\msedgedriver.exe");
                 driver = new EdgeDriver();
                 driver.get(url);
+                driver.manage().deleteAllCookies();
                 driver.manage().window().maximize();
                 break;
 
@@ -55,6 +60,8 @@ public class SetUpClass {
 
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         return driver;
+
+
     }
 
     @After

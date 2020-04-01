@@ -1,17 +1,20 @@
 package stepDefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
-import okhttp3.internal.http2.Header;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pageObjects.HeaderPage;
 import pageObjects.LogInPage;
+import pageObjects.ShoppingCartSumPage;
+import pageObjects.WomenSection;
 
 public class WhenTest {
 
     LogInPage lg = new LogInPage(driver);
     HeaderPage hpage = new HeaderPage(driver);
+    WomenSection wsec = new WomenSection(driver);
+    ShoppingCartSumPage ShCartSum = new ShoppingCartSumPage(driver);
+
     public static WebDriver driver = GivenTest.driver;
 
     @When("User enters username as {string}")
@@ -36,38 +39,44 @@ public class WhenTest {
 
     @When("User adds the first item that appears in that section")
     public void user_adds_the_first_item_that_appears_in_that_section() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        wsec.moveToShort();
+        wsec.clickAddToCartBtn();
     }
 
     @When("User clics on the Proceed to checkout button in the frame")
     public void user_clics_on_the_Proceed_to_checkout_button_in_the_frame() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        wsec.clickCheckOutBtn();
     }
 
-    @When("User clics on the Proceed to checkout button")
-    public void user_clics_on_the_Proceed_to_checkout_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @When("User clics on the first Proceed to checkout button")
+    public void user_clics_on_the_first_Proceed_to_checkout_button() {
+        ShCartSum.clickProceedCheckOutBtn();
+    }
+
+    @When("User clics on the second Proceed to checkout button")
+    public void user_clics_on_the_second_Proceed_to_checkout_button() {
+        ShCartSum.clickSecondProceedCheckOutBtn();
     }
 
     @When("User clics on the checkmark button")
     public void user_clics_on_the_checkmark_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        ShCartSum.clickConfrmCheckBox();
+    }
+
+    @And("User clics on the  last Proceed to checkout button")
+    public void userClicsOnTheLastProceedToCheckoutButton() {
+        ShCartSum.clickThirdProceedCheckOutBtn();
     }
 
     @When("User selects Pay by check")
     public void user_selects_Pay_by_check() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        ShCartSum.clickPayByCheckBtn();
     }
 
     @When("User clics on the I confirm my order button")
     public void user_clics_on_the_I_confirm_my_order_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        ShCartSum.clickConfirmOrderBtn();
     }
+
 
 }
