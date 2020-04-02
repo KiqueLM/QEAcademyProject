@@ -17,11 +17,11 @@ public class SetUpClass {
 
     public static WebDriver driver;
 
-    @Before
-    public WebDriver setUp() throws IOException {
+    @Before()
+    public void setUp() throws IOException {
 
         Properties prop = new Properties();
-        FileInputStream fis = new FileInputStream("src\\test\\java\\Utility\\data.properties");
+        FileInputStream fis = new FileInputStream("src//test//java//Utility//data.properties");
         prop.load(fis);
         String browserName = prop.getProperty("browser");
         String url = prop.getProperty("url");
@@ -29,7 +29,7 @@ public class SetUpClass {
         switch (browserName.toLowerCase()) {
 
             case "chrome":
-                System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\drivers\\chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", "src//test//resources//drivers//chromedriver.exe");
                 driver = new ChromeDriver();
                 driver.get(url);
                 driver.manage().deleteAllCookies();
@@ -37,7 +37,7 @@ public class SetUpClass {
                 break;
 
             case "firefox":
-                System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\drivers\\geckodriver.exe");
+                System.setProperty("webdriver.gecko.driver", "src//test//resources//drivers//geckodriver.exe");
                 driver = new FirefoxDriver();
                 driver.get(url);
                 driver.manage().deleteAllCookies();
@@ -45,7 +45,7 @@ public class SetUpClass {
                 break;
 
             case "edge":
-                System.setProperty("webdriver.edge.driver", "src\\test\\resources\\drivers\\msedgedriver.exe");
+                System.setProperty("webdriver.edge.driver", "src//test//resources//drivers//msedgedriver.exe");
                 driver = new EdgeDriver();
                 driver.get(url);
                 driver.manage().deleteAllCookies();
@@ -58,13 +58,13 @@ public class SetUpClass {
 
         }
 
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        return driver;
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //return driver;
 
 
     }
 
-    @After
+    @After()
     public void tearDown(){
         driver.quit();
     }

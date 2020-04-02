@@ -4,12 +4,16 @@ Feature: Log in Page
   So I can buy Products
 
   @ValidCredentials
-  Scenario: Log in with valid credentials
+  Scenario Outline: Log in with valid credentials
     Given User is on login page
-    When User enters username as "test800@hotmail.com"
-    And User enters password as "test123"
+    When User enters username as "<username>"
+    And User enters password as "<password>"
     And User clics on sign in button
     Then User should be logged correctly
+
+    Examples:
+      |username           |password|
+      |test800@hotmail.com|test123 |
 
   @InvalidCredentials
   Scenario: Log in with invalid credentials

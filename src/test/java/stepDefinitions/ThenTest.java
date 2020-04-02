@@ -5,11 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import pageObjects.ProductPage;
 import pageObjects.ShoppingCartSumPage;
 
 public class ThenTest {
 
     ShoppingCartSumPage ShCartSum = new ShoppingCartSumPage(driver);
+    ProductPage proPage = new ProductPage(driver);
 
     public static WebDriver driver = GivenTest.driver;
 
@@ -31,5 +33,12 @@ public class ThenTest {
     public void user_should_get_a_message_with_the_approval() {
         Assert.assertEquals(ShCartSum.getTextSuccessAlert(), "Your order on My Store is complete.");
         System.out.println(ShCartSum.getTextSuccessAlert());
+    }
+
+    @Then("User should get a success message")
+    public void user_should_get_a_success_message() {
+        WebElement crossImg = driver.findElement(By.xpath("//span[@class='cross']"));
+        boolean imagePresent = crossImg.isEnabled();
+        Assert.assertTrue(imagePresent, "No image displayed");
     }
 }
