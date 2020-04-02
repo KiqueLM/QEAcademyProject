@@ -13,11 +13,16 @@ public class HeaderPage {
 
     }
 
+    @FindBy(xpath = "//img[@class=\"logo img-responsive\"]")
+    WebElement logoImg;
+
     @FindBy(className = "sf-with-ul")
     WebElement womenTab;
 
     public void clickWomenTab(){
         womenTab.click();
     }
+
+    public void clickLogoImg() {logoImg.click();}
 
 }
