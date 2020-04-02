@@ -1,11 +1,11 @@
 
 @CreateAccount
 Feature: Create Account Page
-as user i should be able to create an Account
-so i can interact with the web page
+As user i should be able to create an Account
+So i can interact with the web page
 
   @UnloggedUser
-  Scenario Outline:  Unlogged User is already on the website 
+  Scenario Outline:  Not able to create an account
     Given User is on Home Page
     When User click in Sign in
     When User enters new email as "<username>"
@@ -13,8 +13,8 @@ so i can interact with the web page
     Then User is not able to create an Account
 
   Examples:
-      |username           |
-      |123fdf							|
+      |username     |
+      |123fdf		|
       
   @ValidUser
   Scenario Outline:  Unlogged User is already on the website 
@@ -30,7 +30,7 @@ so i can interact with the web page
 
       
   @Register
-  Scenario Outline:  Unlogged User is already on the website 
+  Scenario Outline:  User with no credentials creates an account
     Given User is on Home Page
     When User click in Sign in
     When User enters new email as "<username>"
@@ -47,8 +47,9 @@ so i can interact with the web page
     And User select an state on country box
     And User write a mobile number in Mobile Phone as "81234490"
     And Assign an address on alias for future reference as "this address"
-		And click on Register button
-		Then Account created Correctly
- Examples:
-    |username           |name||lastName|
-    |emiliano5677@gmail.com			|Josefo||estabanato|
+    And click on Register button
+    Then Account created Correctly
+
+    Examples:
+    |username                           |name|  |lastName|
+    |emilianojckjk@gmail.com			|Josefo||estabanato|

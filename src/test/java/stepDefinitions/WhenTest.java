@@ -10,11 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 
-import pageObjects.CreateAccount;
-import pageObjects.HeaderPage;
-import pageObjects.LogInPage;
-import pageObjects.ShoppingCartSumPage;
-import pageObjects.WomenSection;
+import pageObjects.*;
 
 public class WhenTest {
 
