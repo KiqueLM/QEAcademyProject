@@ -1,7 +1,9 @@
 package stepDefinitions;
 
-import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
+
+import io.cucumber.java.en.Given;
+import pageObjects.CreateAccount;
 import pageObjects.LogInPage;
 
 
@@ -25,7 +27,9 @@ public class GivenTest {
 
     @Given("User is on Home Page")
     public void user_is_on_Home_Page() {
-        System.out.println("Esto lo hizo Luis");
+        driver.get("http://automationpractice.com/index.php?");
+        
+        
     }
 
 }
