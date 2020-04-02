@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
+
 import pageObjects.CreateAccount;
 import pageObjects.HeaderPage;
 import pageObjects.LogInPage;
@@ -17,12 +18,15 @@ import pageObjects.WomenSection;
 
 public class WhenTest {
 
-    LogInPage lg = new LogInPage(driver);
-    HeaderPage hpage = new HeaderPage(driver);
-    WomenSection wsec = new WomenSection(driver);
-    ShoppingCartSumPage ShCartSum = new ShoppingCartSumPage(driver);
-    CreateAccount ac = new CreateAccount(driver);
     public static WebDriver driver = GivenTest.driver;
+
+    LogInPage lg = new LogInPage(driver);
+    HeaderPage hPage = new HeaderPage(driver);
+    WomenSection wSec = new WomenSection(driver);
+    ShoppingCartSumPage shCartSum = new ShoppingCartSumPage(driver);
+    HomePage homePage = new HomePage(driver);
+    ProductPage proPage = new ProductPage(driver);
+    CreateAccount ac = new CreateAccount(driver);
 
     @When("User enters username as {string}")
     public void user_enters_username_as(String email) {
@@ -41,48 +45,48 @@ public class WhenTest {
 
     @When("User clics on the WOMEN tab")
     public void user_clics_on_the_WOMEN_tab() {
-        hpage.clickWomenTab();
+        hPage.clickWomenTab();
     }
 
     @When("User adds the first item that appears in that section")
     public void user_adds_the_first_item_that_appears_in_that_section() {
-        wsec.moveToShort();
-        wsec.clickAddToCartBtn();
+        wSec.moveToShort();
+        wSec.clickAddToCartBtn();
     }
 
     @When("User clics on the Proceed to checkout button in the frame")
     public void user_clics_on_the_Proceed_to_checkout_button_in_the_frame() {
-        wsec.clickCheckOutBtn();
+        wSec.clickCheckOutBtn();
     }
 
     @When("User clics on the first Proceed to checkout button")
     public void user_clics_on_the_first_Proceed_to_checkout_button() {
-        ShCartSum.clickProceedCheckOutBtn();
+        shCartSum.clickProceedCheckOutBtn();
     }
 
     @When("User clics on the second Proceed to checkout button")
     public void user_clics_on_the_second_Proceed_to_checkout_button() {
-        ShCartSum.clickSecondProceedCheckOutBtn();
+        shCartSum.clickSecondProceedCheckOutBtn();
     }
 
     @When("User clics on the checkmark button")
     public void user_clics_on_the_checkmark_button() {
-        ShCartSum.clickConfrmCheckBox();
+        shCartSum.clickConfrmCheckBox();
     }
 
     @And("User clics on the  last Proceed to checkout button")
     public void userClicsOnTheLastProceedToCheckoutButton() {
-        ShCartSum.clickThirdProceedCheckOutBtn();
+        shCartSum.clickThirdProceedCheckOutBtn();
     }
 
     @When("User selects Pay by check")
     public void user_selects_Pay_by_check() {
-        ShCartSum.clickPayByCheckBtn();
+        shCartSum.clickPayByCheckBtn();
     }
 
     @When("User clics on the I confirm my order button")
     public void user_clics_on_the_I_confirm_my_order_button() {
-        ShCartSum.clickConfirmOrderBtn();
+        shCartSum.clickConfirmOrderBtn();
     }
     
    
@@ -109,60 +113,42 @@ public class WhenTest {
     
     @When("User click on Mr Radio Button") 
     public void User_click_on_Mr_Radio_Button()  {
-        
-        //WebElement radButt = driver.findElement(By.xpath("//body[@id='authentication']/div[@id='page']/div[@class='columns-container']/div[@id='columns']/div[@class='row']/div[@id='center_column']/div[@id='noSlide']/form[@id='account-creation_form']/div[@class='account_creation']/div[@class='clearfix']/div[1]"));
-        //System.out.println(radButt.getText());
-        //radButt.click();
     	ac.checkL();
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
     }
 
     @When("User Introduce Firts Name as {string}")
     public void User_Introduce_Firts_Name(String name) {
-        
-        //WebElement radButt = driver.findElement(By.id("customer_firstname"));
-        //radButt.sendKeys(name);
     	ac.fNameC(name);
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         }
 
     @When("User Introduce Last Name as {string}") 
     public void User_Introduce_Last_Name(String lastName) {
-    	//WebElement radButt = driver.findElement(By.id("customer_lastname"));
-        //radButt.sendKeys(lastName);
     	ac.lNameC(lastName);
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
     }
 
     @When("User insert a Email as {string}")
     public void User_insert_a_Email(String email) {
-    	//WebElement radButt = driver.findElement(By.id("email"));
-        //radButt.click();
     	ac.nEMail();
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
     }
 
     @When("User write a Password as {string}")
     public void User_write_a_Password_with_right_format(String password) {
-    	//WebElement radButt = driver.findElement(By.id("passwd"));
-        //radButt.sendKeys(password);
         ac.Password2(password);
     	driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     @When("User enter his Address as {string}")
     public void User_enter_his_Address(String address) {
-    	
-    	//WebElement radButt = driver.findElement(By.id("address1"));
-        //radButt.sendKeys(address);
     	ac.addres(address);
         driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
     }
 
     @When("User write a city as {string}") 
     public void User_write_a_city(String city) {
-    	//WebElement radButt = driver.findElement(By.id("city"));
-        //radButt.sendKeys(city);
     	ac.city(city);
         driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
     }
@@ -177,8 +163,6 @@ public class WhenTest {
 
     @When("User Writes a Zipcode as {string}")
     public void User_Writes_a_Zipcode(String zpcode)  {
-    	//WebElement radButt = driver.findElement(By.id("postcode"));
-        //radButt.sendKeys(zpcode);
     	ac.post(zpcode);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
@@ -193,26 +177,47 @@ public class WhenTest {
 
     @When("User write a mobile number in Mobile Phone as {string}")
     public void User_write_a_mobile_number_in_Mobile_Phone(String cel) {
-    	//WebElement radButt = driver.findElement(By.id("phone_mobile"));
-        //radButt.sendKeys(cel);
     	ac.phone(cel);
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     @When("Assign an address on alias for future reference as {string}")
     public void Assign_an_address_on_alias_for_future_reference(String addressR){
-    	//WebElement radButt = driver.findElement(By.id("alias"));
-        //radButt.sendKeys(addressR);
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+    	WebElement radButt = driver.findElement(By.id("alias"));
+      radButt.sendKeys(addressR);
         
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);      
     }
+  
     @When("click on Register button")
     public void click_on_Register_button()  {
-    	//WebElement radButt = driver.findElement(By.xpath("//span[contains(text(),'Register')]"));
-        //radButt.click();
     	ac.regButton();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
     
+    @When("User clics on any item from the shop")
+    public void user_clics_on_any_item_from_the_shop() {
+    homePage.clickBlackBlouseItm();
+    }
+
+    @When("User puts the number two on the quantity option")
+    public void user_puts_the_number_on_the_quantity_option() {
+    proPage.clickPlusBtn();
+    }
+
+    @When("User selects medium size")
+    public void user_selects_medium_size() {
+        proPage.selectMediumSize();
+    }
+
+    @When("User selects a different color")
+    public void user_selects_a_different_color() {
+        proPage.clickWhiteColor();
+    }
+
+    @When("User clics on Add to cart button")
+    public void user_clics_on_Add_to_cart_button() {
+        proPage.clickAddToCartBtn();
+    }
 
 }

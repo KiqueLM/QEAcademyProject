@@ -7,11 +7,14 @@ import org.testng.Assert;
 
 import io.cucumber.java.en.Then;
 import pageObjects.CreateAccount;
+import pageObjects.ProductPage;
+
 import pageObjects.ShoppingCartSumPage;
 
 public class ThenTest {
 
     ShoppingCartSumPage ShCartSum = new ShoppingCartSumPage(driver);
+    ProductPage proPage = new ProductPage(driver);
 
     public static WebDriver driver = GivenTest.driver;
 
@@ -45,9 +48,17 @@ public class ThenTest {
     	//Assert.assertEquals(ac.alertMessage(),"Invalid email address");
     
     }
+  
     @Then("Account created Correctly")
     public void Account_created_Correctly() {
     	Assert.assertEquals(driver.getCurrentUrl(), "http://automationpractice.com/index.php?controller=my-account");
     }
-    
+
+    @Then("User should get a success message")
+    public void user_should_get_a_success_message() {
+        WebElement crossImg = driver.findElement(By.xpath("//span[@class='cross']"));
+        boolean imagePresent = crossImg.isEnabled();
+        Assert.assertTrue(imagePresent, "No image displayed");
+    }
+
 }
