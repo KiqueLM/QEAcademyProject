@@ -10,10 +10,10 @@ Feature: Shoping
     When User clics on the WOMEN tab
     And User adds the first item that appears in that section
     And User clics on the Proceed to checkout button in the frame
-    And User clics on the Proceed to checkout button
-    And User clics on the Proceed to checkout button
+    And User clics on the first Proceed to checkout button
+    And User clics on the second Proceed to checkout button
     And User clics on the checkmark button
-    And User clics on the Proceed to checkout button
+    And User clics on the  last Proceed to checkout button
     And User selects Pay by check
     And User clics on the I confirm my order button
     Then User should get a message with the approval
