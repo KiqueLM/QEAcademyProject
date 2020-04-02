@@ -1,4 +1,3 @@
-
 @CreateAccount
 Feature: Create Account Page
 As user i should be able to create an Account
