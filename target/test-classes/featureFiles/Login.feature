@@ -16,16 +16,12 @@ Feature: Log in Page
       |test800@hotmail.com|test123 |
 
   @InvalidCredentials
-  Scenario Outline: Log in with invalid credentials
+  Scenario: Log in with invalid credentials
     Given User is on login page
     When User enters username as "wrongUsername@test.com"
     And User enters password as "test1234"
     And User clics on sign in button
     Then User should not get logged in
-
-    Examples:
-      |username               |password|
-      |wrongUsername@test.com |test1234|
 
   @NotEnteringCredentials
   Scenario: Log in with no credentials

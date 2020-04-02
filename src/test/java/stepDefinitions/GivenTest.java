@@ -22,7 +22,8 @@ public class GivenTest {
 
     @Given("User is on login page")
     public void user_is_on_login_page() {
-        //driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
+       // driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account%22");
+    	homePage.clickSignInBtn();
     }
 
     @Given("User is logged in with username as {string} and enters password as {string}")
@@ -35,5 +36,4 @@ public class GivenTest {
     }
 
 }
-
 

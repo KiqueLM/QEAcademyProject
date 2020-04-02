@@ -6,9 +6,9 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources/featureFiles",
         glue = "stepDefinitions",
-        tags = "@Register"
+        tags = "@CanCustomize"
 )
 
-public class ThirdRunner extends AbstractTestNGCucumberTests {
+public class FourthRunner extends AbstractTestNGCucumberTests {
 
 }
